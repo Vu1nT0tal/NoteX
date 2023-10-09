@@ -1,0 +1,135 @@
+{
+  "name": "notex",
+  "displayName": "NoteX代码笔记",
+  "version": "0.0.1",
+  "publisher": "firmianay",
+  "description": "实现代码和笔记的关联",
+  "categories": [
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "activationEvents": [
+    "workspaceContains:**/**"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "notexActivityBar",
+          "title": "NoteX",
+          "icon": "icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "notexActivityBar": [
+        {
+          "id": "notexNotebooks",
+          "name": "笔记本"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "notexNotebooks",
+        "contents": "没有找到笔记本\n[添加新笔记本](command:notex.addNotebook)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "notex.openSettings",
+        "title": "NoteX：打开设置"
+      },
+      {
+        "command": "notex.addNotebook",
+        "title": "NoteX：添加笔记本"
+      },
+      {
+        "command": "notex.editNotebook",
+        "title": "NoteX：编辑笔记本"
+      },
+      {
+        "command": "notex.deleteNotebook",
+        "title": "NoteX：删除笔记本"
+      },
+      {
+        "command": "notex.createNote",
+        "title": "NoteX：创建笔记"
+      },
+      {
+        "command": "notex.deleteNote",
+        "title": "NoteX：删除笔记"
+      },
+      {
+        "command": "notex.updateManifest",
+        "title": "NoteX：刷新笔记清单(耗时较长)"
+      }
+    ],
+    "configuration": {
+      "title": "NoteX 配置",
+      "properties": {}
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "notex.createNote",
+          "group": "group1"
+        },
+        {
+          "command": "notex.deleteNote",
+          "group": "group1"
+        },
+        {
+          "command": "notex.updateManifest",
+          "group": "group1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "notex.createNote",
+        "key": "alt+A",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "notex.deleteNote",
+        "key": "alt+D",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "main": "./extension.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.78.0",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.19.0",
+    "axios": "^1.4.0",
+    "ejs": "^3.1.9"
+  },
+  "bugs": {
+    "url": "https://github.com/VulnTotal-Team/NoteX/issues",
+    "email": "firmianay@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VulnTotal-Team/NoteX"
+  },
+  "homepage": "https://github.com/VulnTotal-Team/NoteX/blob/main/README.md",
+  "license": "SEE LICENSE IN LICENSE.txt"
+}

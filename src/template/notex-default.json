@@ -1,0 +1,13 @@
+{
+  "repo_name": "",
+  "repo_url": "",
+  "default": [
+    {
+      "name": "devdocs",
+      "description": "开发文档集合",
+      "fileUri": "",
+      "noteUrl": "https://devdocs.io/"
+    }
+  ],
+  "source": []
+}
