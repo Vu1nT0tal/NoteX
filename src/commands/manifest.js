@@ -1,7 +1,10 @@
 const vscode = require("vscode");
 const fs = require("fs");
 const path = require("path");
-const { defaultManifestName } = require("../config/config");
+const {
+  defaultManifestName,
+  notebook,
+} = require("../config");
 const {
   isValidExt,
   isValidDir,
@@ -12,7 +15,13 @@ const {
   writeManifestData,
   getManifestPath,
 } = require("../utils/utils");
-const { getSource } = require("../notebooks/feishu");
+
+let getSource;
+if (notebook === "feishu") {
+  getSource = require("../notebooks/feishu").getSource;
+} else if (notebook === "wolai") {
+  getSource = require("../notebooks/wolai").getSource;
+}
 
 // 本地创建manifest
 const initManifest = async () => {

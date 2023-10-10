@@ -1,5 +1,4 @@
 const vscode = require("vscode");
-const { feishuUrl } = require("../config/config");
 const {
   openWeb,
   isValidDir,
@@ -8,7 +7,17 @@ const {
   writeManifestData,
 } = require("../utils/utils");
 const { initManifest } = require("./manifest");
-const { createNode } = require("../notebooks/feishu");
+
+let baseUrl;
+let createNode;
+const {notebook} = require("../config");
+if (notebook === "feishu") {
+  createNode = require("../notebooks/feishu").createNode;
+  baseUrl = require("../config").feishuUrl;
+} else if (notebook === "wolai") {
+  createNode = require("../notebooks/wolai").createNode;
+  baseUrl = require("../config").wolaiUrl;
+}
 
 // 创建并打开
 const createNote = async () => {
@@ -38,7 +47,7 @@ const createNote = async () => {
   // 如果没有笔记，则创建
   if (!noteItem) {
     const node_token = await createNode(manifest.repo_name, fileUri);
-    const noteUrl = `${feishuUrl}/${node_token}`;
+    const noteUrl = `${baseUrl}/${node_token}`;
 
     // 在manifest中
     manifest.source.forEach(item => {

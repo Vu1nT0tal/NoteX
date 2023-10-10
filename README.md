@@ -9,13 +9,24 @@ VSCode扩展，实现代码和笔记的关联。
 - 充分利用云笔记的优势，比如图片、表格、双链跳转等，比注释更加灵活丰富。
 - 代码和笔记左右对照，方便查看，无需离开VSCode。
 - 使用的人越多，笔记越丰富，越能体现价值。
-- 目前支持飞书、我来作为笔记托管平台。
+- 目前支持飞书作为笔记托管平台。
+
+这里是我的开源代码笔记，欢迎大家一起来完善：[打开笔记](https://www.wolai.com/chao96/hozK3fTYuXusj7g1yMGUZL)
 
 # 安装
 
-暂时没有发布到应用商店，所以只能本地安装。下载`release/notex.vsix`，然后打开扩展页面，点击右上角`...`->`从VSIX安装`。同样更新也得手动。
+由于一些配置项需要填写，所以暂时只能从源码安装。
 
-# 开发
+```js
+// 笔记托管平台
+export const notebook = "feishu";
+
+// 飞书
+export const feishuUrl = "https://xxxx.feishu.cn/wiki";
+export const feishuAppId = "cli_xxxxxxxxxx";
+export const feishuAppSecret = "xxxxxxxxxx";
+export const feishuSpaceId = "xxxxxxxxxx";
+```
 
 拉取项目，用VSCode打开后，在菜单栏选择`运行`->`启动调试`，或使用快捷键`F5`。
 
@@ -29,6 +40,8 @@ $ git clone https://github.com/VulnTotal-Team/NoteX.git
 $ npm install -g @vscode/vsce   # 安装打包工具
 $ vsce package -o release       # 打包成.vsix
 ```
+
+最后，打开扩展页面，点击右上角`...`->`从VSIX安装`。
 
 # 使用方法
 
@@ -45,3 +58,8 @@ $ vsce package -o release       # 打包成.vsix
 # 参考资料
 
 - Extension API：https://code.visualstudio.com/api
+
+# TODO
+
+- 支持更多笔记平台：我来、Notion等
+- 支持本地存储：Markdown文件

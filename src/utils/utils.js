@@ -9,7 +9,7 @@ const {
   ignorePath,
   noteXFolderName,
   manifestName
-} = require("../config/config");
+} = require("../config");
 
 // 网络代理
 const axiosProxy = axios.create({

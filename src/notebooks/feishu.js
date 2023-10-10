@@ -5,7 +5,7 @@ const {
   feishuAppId,
   feishuAppSecret,
   feishuSpaceId,
-} = require("../config/config");
+} = require("../config");
 
 // 创建实例
 const client = new lark.Client({
@@ -185,8 +185,6 @@ const getNodeTree = async (root_token) => {
 };
 
 module.exports = {
-  getNodeInfo,
   createNode,
-  getNodeChildren,
   getSource,
 };
